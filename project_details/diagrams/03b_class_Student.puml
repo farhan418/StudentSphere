@@ -1,0 +1,36 @@
+@startuml
+class Student {
+- string firstName
+- string lastName
+- short int age
+- struct Date dateOfBirth
+- string address
+- int registrationId
+- PaymentStatus paymentStatus
+-- constructors --
++ Student()
++ Student(string firstName, string lastName)
++ Student(short int age)
++ Student(struct Date dateOfBirth)
++ Student(string address)
++ Student(const Student&)
++ Student(const Student&&)
+-- getters --
++ get_firstName()
++ get_lastName()
++ get_age()
++ get_ageOfBirth()
++ get_address()
++ get_registrationId()
+-- setters --
++ set_firstName()
++ set_lastName()
++ set_age()
++ set_ageOfBirth()
++ set_address()
++ set_registrationId()
+-- operator overloads --
++ operator=(const Student&)
++ operator<<(const Student&)
+}
+@enduml

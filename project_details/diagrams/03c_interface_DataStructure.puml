@@ -1,0 +1,27 @@
+@startuml
+interface DataStructure {
+- string dataStructureName
+- vector<string> supportedOperations
+-- constructors --
++ DataStructure()
++ DataStructure(string dataStructureName)
++ DataStructure(const vector<string>& supportedOperations)
++ DataStructure(const DataStructure&)
++ DataStructure(const DataStructure&&)
+-- getters --
++ get_dataStructureName()
++ get_supportedOperations()
+-- setters --
++ set_dataStructureName()
++ set_supportedOperations()
+-- operator overloads --
++ operator=(const DataStructure&)
++ operator<<(const DataStructure&)
+-- data structure operations --
++ insert() = 0
++ search() = 0
++ update() = 0
++ delete() = 0
++ traverse() = 0
+}
+@enduml
