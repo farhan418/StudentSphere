@@ -65,10 +65,11 @@ std::ostream& operator<<(std::ostream& out, struct Date&& date) noexcept {
 
 void clearScreen() {
 	#ifdef _WIN32
-		system("cls");
+		int retVal = system("cls");
 	#else
-		system("clear");
+		int retVal = system("clear");
 	#endif
+	std::cerr << retVal;
 }
 
 int displayMainMenu() {
