@@ -81,8 +81,10 @@ Status DoublyLinkedList::insert(const Student& obj, unsigned long index) {
 	else {  // Non-Empty list
 		auto cursor = head;
 		unsigned long position = 1;
-		while(cursor->nextNodePtr && position < index)
+		while(cursor->nextNodePtr && position < index) {
 			cursor = cursor->nextNodePtr;
+			position += 1;
+		}
 		auto nextNode = cursor->nextNodePtr;
 		cursor->nextNodePtr = temp;
 		temp->nextNodePtr = nextNode;
