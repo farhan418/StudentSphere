@@ -27,6 +27,8 @@ public:
 //class DoublyLinkedList : public IDataStructure {
 class DoublyLinkedList {
 public:
+	const unsigned long NOT_FOUND_CODE = 4294967295L;
+	
 	DoublyLinkedList();
 	DoublyLinkedList(const Student& obj);
 	Status insert(const Student& obj);  // insert at end
@@ -37,6 +39,7 @@ public:
 	Status deleteItem(unsigned long index);
 	Status traverse(Status (*functionPtr)(Student& obj));
 	Status display() const;
+	Status sortByRegistrationId(bool reverse);
 	~DoublyLinkedList();
 private:
 	unsigned long size;

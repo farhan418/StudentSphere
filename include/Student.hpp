@@ -108,6 +108,8 @@ public:
     Student& operator=(Student&& otherStudent) noexcept;
     bool operator==(const Student& otherStudent);
 	bool operator==(Student&& otherStudent) noexcept;
+	bool operator<(const Student& otherStudent);
+	bool operator<(Student&& otherStudent) noexcept;
 
     friend std::ostream& operator<<(std::ostream& out, const Student& student);
     friend std::ostream& operator<<(std::ostream& out, Student&& student) noexcept;

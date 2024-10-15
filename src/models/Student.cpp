@@ -172,3 +172,10 @@ Status processStudentObj(Student& obj) {
 	std::cout << ", registrationId = " << obj.getRegistrationId() << ")";
 	return Status::SUCCESS;
 }
+
+bool Student::operator<(const Student& otherStudent) {
+	return this->registrationId < otherStudent.getRegistrationId();
+}
+bool Student::operator<(Student&& otherStudent) noexcept {
+	return this->registrationId < otherStudent.getRegistrationId();
+}

@@ -16,7 +16,6 @@ int main() {
 	
 	do {
 		choice = displayMainMenu();
-//		clearScreen();
 		switch (choice) {
 			case 21 :
 				doublyLinkedListPlayground();

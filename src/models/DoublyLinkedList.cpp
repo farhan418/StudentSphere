@@ -175,6 +175,89 @@ Status DoublyLinkedList::display() const {
 	return Status::SUCCESS;
 }
 
+Status DoublyLinkedList::sortByRegistrationId(bool reverse=false) {
+	auto cursorI = head;
+	for(unsigned long i = 0; i < size-1; i++) {
+		auto cursorJ = head;
+		bool swapFlag = false;
+		for (auto j = 0; j < size-i-1; j++) {
+			auto cursorJplus1 = cursorJ->nextNodePtr;
+			auto studentJ = *(cursorJ->dataObjPtr);
+			auto studentJplus1 = *(cursorJplus1->dataObjPtr);
+			std::cout << "\n================================\nComparing :\nstudentJ=";
+			processStudentObj(studentJ);
+			std::cout << "\nstudentJplus1=";
+			processStudentObj(studentJplus1);
+			
+			bool compareFlag = false;
+			if (!reverse) {
+				compareFlag = studentJplus1 < studentJ;
+				std::cout << "\nstudentJplus1 < studentJ = " << compareFlag << "\n";
+			}
+			else {
+				compareFlag = studentJ < studentJplus1;
+				std::cout << "\nstudentJ < studentJplus1 = " << compareFlag << "\n";
+			}
+						
+			if (compareFlag) {  // swap nodes or objects
+				std::cout << "\nswapping data objects...\n";
+				swapFlag = true;
+				auto temp = std::move((cursorJ->dataObjPtr));
+				cursorJ->dataObjPtr = std::move((cursorJ->nextNodePtr)->dataObjPtr);
+				(cursorJ->nextNodePtr)->dataObjPtr = std::move(temp);
+				
+//				if (j == size-i-2)
+//					tail = cursorJ;
+//				if (j == 0)
+//					head = head->nextNodePtr;
+//				if (j == size-i-2)
+//					tail = tail->prevNodePtr.lock();
+//				cursorJ->nextNodePtr = cursorJplus1->nextNodePtr;
+//				cursorJplus1->nextNodePtr = cursorJ;
+//				auto temp = cursorJ->prevNodePtr.lock();
+//				if (temp)
+//					temp->nextNodePtr = cursorJplus1;
+//				
+//				cursorJplus1->prevNodePtr = cursorJ->prevNodePtr;
+//				cursorJ->prevNodePtr = cursorJplus1;
+//				if(cursorJ->nextNodePtr)
+//					cursorJ->nextNodePtr->prevNodePtr = cursorJ;
+					
+//				cursorJ->nextNodePtr = cursorJplus1->nextNodePtr;
+//				if (cursorJplus1->nextNodePtr)
+//					cursorJplus1->nextNodePtr->prevNodePtr = cursorJ;
+//				cursorJplus1->nextNodePtr = cursorJ;
+//				cursorJplus1->prevNodePtr = cursorJ->prevNodePtr.lock();
+//				auto temp = cursorJ->prevNodePtr.lock();
+//				if (temp)
+//					temp->nextNodePtr = cursorJplus1;
+//				cursorJ->prevNodePtr = cursorJplus1;
+				
+//				std::cout << "\ncursorJ" << *(cursorJ->dataObjPtr);
+//				std::cout << "\ncoursorJplus1" << *((cursorJ->nextNodePtr)->dataObjPtr);
+			}	
+			cursorJ = cursorJ->nextNodePtr;
+		}
+		cursorI = cursorI->nextNodePtr;
+		traverse(processStudentObj);
+		getchar();
+		if (!swapFlag) {
+			std::cout << "\n\nAlready sorted\n\n";
+			break;
+		}
+	}
+//	if(reverse) {
+//		std::cout << "\n\nHead : ";  processStudentObj(*(head->dataObjPtr));
+//		std::cout << "\nTail : "; processStudentObj(*(tail->dataObjPtr));
+//		auto temp = head;
+//		head = tail;
+//		tail = temp;
+//		std::cout << "\n\nHead : ";  processStudentObj(*(head->dataObjPtr));
+//		std::cout << "\nTail : "; processStudentObj(*(tail->dataObjPtr));
+//	}
+	return Status::SUCCESS;
+}
+
 void doublyLinkedListPlayground() {
 	int choice = 0;
 	std::string inputString = "";
@@ -188,6 +271,7 @@ void doublyLinkedListPlayground() {
 			"23. Search",
 			"24. Traverse",
 			"25. Delete",
+			"26. Sort"
 			"\n99. Exit",
 			"\nEnter your choice : "
 	};
@@ -215,7 +299,10 @@ void doublyLinkedListPlayground() {
 			case 23 :  // Search
 				std::cout << "\nEnter registrationId to search : ";
 				std::cin >> inputString;
-				dll.search(inputString);
+				if (dll.NOT_FOUND_CODE == dll.search(inputString)) {
+					std::cout << "\nStudent with registrationId = " << inputString;
+					std::cout << " not found in the linked list.\n";
+				}
 				break;	
 			case 24 :  // Traverse
 				dll.traverse(processStudentObj);
@@ -224,6 +311,13 @@ void doublyLinkedListPlayground() {
 				std::cout << "\nEnter index : ";
 				std::cin >> index;
 				dll.deleteItem(index);
+				break;
+			case 26 : // sort by registrationId
+				std::cout << "\nEnter 1/2 for ascending/descending : ";
+				std::cin >> index;
+				if(Status::SUCCESS == dll.sortByRegistrationId(2 == index)) {
+					std::cout << "\nSuccessfully sorted!\n";
+				}
 				break;
 			case 99 : break;
 			default :
