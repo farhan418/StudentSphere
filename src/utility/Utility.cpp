@@ -64,8 +64,10 @@ void clearScreen() {
 	#ifdef _WIN32
 		system("cls");
 	#else
-		system("clear");
+		int r = system("clear");
 	#endif
+	if (r == 1)
+		std::cerr << "cleared screen";
 }
 
 int displayMainMenu() {
