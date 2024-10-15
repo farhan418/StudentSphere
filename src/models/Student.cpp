@@ -59,22 +59,6 @@ Student::Student(const std::string& firstName,
     this->feePaymentStatus = feePaymentStatus;
 }
 
-//// copy constructor
-/*
-Student::Student(const Student& otherStudent) {
-    this->firstName = otherStudent.firstName;
-    this->lastName = otherStudent.lastName;
-    this->age = otherStudent.age;
-    this->dateOfBirth = otherStudent.dateOfBirth;
-    this->address = otherStudent.address;
-    // registrationId is not copied
-    //this->registrationId = "S+" + std::string(lastRegistrationId);
-    //lastRegistrationId += 1;
-    this->registrationId = otherStudent.registrationId;
-    this->feePaymentStatus = otherStudent.feePaymentStatus;
-}
-*/
-
 // move constructor
 Student::Student(Student&& otherStudent) noexcept {
     this->firstName = std::move(otherStudent.firstName);
@@ -155,6 +139,9 @@ std::ostream& operator<<(std::ostream& out, Student&& student) noexcept {
     return out;
 }
 
+/* function to generate and return a Student object
+ * with random values set
+ */
 Student generateStudentObj() {
 	std::vector<std::string> firstNameList = {
         "Ahmed", "Fatima", "Youssef", "Aisha", "Omar",
@@ -176,6 +163,9 @@ Student generateStudentObj() {
 	);
 }
 
+/* demo function which process a student object
+ * used along with traverse function of DoublyLinkedList
+ */
 Status processStudentObj(Student& obj) {
 	std::cout << "\nStudent(" << obj.getFirstName() << " " << obj.getLastName();
 	std::cout << ", age*10 = " << 10 * obj.getAge() << " ";

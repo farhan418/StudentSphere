@@ -1,3 +1,8 @@
+/* File : Utility.hpp
+ * Author : Mohammed Farhan Haider <mohammed-farhan.haider@capgemini.com>
+ * Description : Header file containing utility declarations
+ */
+ 
 #ifndef UTILITY_HPP
 #define UTILITY_HPP
 
@@ -20,7 +25,6 @@ enum class Status {
 struct Date {
 public:
     // constructors and destructors
-//    Date() = delete;
 	Date();
     Date(const unsigned short day,
          const unsigned short month,

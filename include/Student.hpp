@@ -1,3 +1,9 @@
+/* File : Student.hpp
+ * Author : Mohammed Farhan Haider <mohammed-farhan.haider@capgemini.com>
+ * Description : Header file containing declarations for implementing
+ * class Student
+ */
+
 #ifndef STUDENT_HPP
 #define STUDENT_HPP
 

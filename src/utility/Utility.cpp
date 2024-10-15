@@ -1,3 +1,8 @@
+/* File : Utility.cpp
+ * Author : Mohammed Farhan Haider <mohammed-farhan.haider@capgemini.com>
+ * Description : This file contains utility definitions
+ */
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
@@ -50,13 +55,11 @@ struct Date& Date::operator=(struct Date&& otherDate) noexcept {
 //// operator<< overloadings using lvalue and rvalue for struct Date
 std::ostream& operator<<(std::ostream& out, const struct Date& date) {
     out << date.day << "/" << date.month << "/" << date.year;
-//    out << "\nlvalue operator<< called\n";
     return out;
 }
 
 std::ostream& operator<<(std::ostream& out, struct Date&& date) noexcept {
     out << date.day << "/" << date.month << "/" << date.year;
-//    out << "\nrvalue (move) operator<< called\n";
     return out;
 }
 
@@ -64,10 +67,8 @@ void clearScreen() {
 	#ifdef _WIN32
 		system("cls");
 	#else
-		int r = system("clear");
+		system("clear");
 	#endif
-	if (r == 1)
-		std::cerr << "cleared screen";
 }
 
 int displayMainMenu() {

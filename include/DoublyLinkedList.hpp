@@ -1,3 +1,9 @@
+/* File : DoublyLinkedList.hpp
+ * Author : Mohammed Farhan Haider <mohammed-farhan.haider@capgemini.com>
+ * Description : This file contains required declarations for the
+ * implementation of DoublyLinkedList.
+ */
+
 #ifndef DOUBLYLINKEDLIST_HPP
 #define DOUBLYLINKEDLIST_HPP
 
@@ -23,12 +29,10 @@ class DoublyLinkedList {
 public:
 	DoublyLinkedList();
 	DoublyLinkedList(const Student& obj);
-//	DoublyLinkedList(const std::vector<Student>& objList);
 	Status insert(const Student& obj);  // insert at end
 	Status insert(const Student& obj, unsigned long index);  // insert at index, for beginning, index = 0
 	Status insert(Student&& obj) noexcept;  // insert at end
 	Status insert(Student&& obj, unsigned long index) noexcept;  // insert at index, for beginning, index = 0
-//	std::shared_ptr<DoublyLinkedListNode> createNode(Student& obj);
 	unsigned long search(const std::string& registrationId);
 	Status deleteItem(unsigned long index);
 	Status traverse(Status (*functionPtr)(Student& obj));

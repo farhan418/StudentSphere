@@ -1,3 +1,9 @@
+/* File : DoublyLinkedList.cpp
+ * Author : Mohammed Farhan Haider <mohammed-farhan.haider@capgemini.com>
+ * Description : This file contains required definitions for the
+ * implementation of DoublyLinkedList.
+ */
+
 #include <iostream>
 #include <memory>
 #include "Utility.hpp"
@@ -34,25 +40,6 @@ DoublyLinkedList::~DoublyLinkedList() {
 	head.reset();
 	tail.reset();
 }
-
-//DoublyLinkedList::DoublyLinkedList(const std::vector<Student>& objList) {
-//	std::shared_ptr<DoublyLinkedListNode> temp = nullptr;
-//	for(const Student& obj : objList) {
-////			std::shared_ptr<DoublyLinkedListNode> ptr = std::make_shared<DoublyLinkedListNode>(obj);
-//		if (nullptr != head) {
-//			temp->nextNodePtr = createNode(obj);
-//			// check for error in creation of new node
-//			temp = temp->nextNodePtr;
-//		}
-//		else {
-//			head = createNode(obj);
-//			tail = head;
-//			temp = head;
-//		}
-//	}
-//	this->size = objList.length();
-//}
-
 
 /* function to insert a new dynamically created node
  * at the index position of the linked list
@@ -104,41 +91,21 @@ Status DoublyLinkedList::insert(const Student& obj, unsigned long index) {
  */
 Status DoublyLinkedList::insert(const Student& obj) {
 	insert(obj, size);
-//	auto temp = std::make_shared<Student>(obj);
-//	if (temp == nullptr)
-//		return Status::FAILURE;
-//			
-//	if(nullptr == head) {  // Empty list
-//		head  = temp;
-//		tail = temp;
-//	}
-//	else {  // Non-Empty list
-//		tail->nextNodePtr = temp;
-//		temp->prevNodePtr = tail;
-//		tail = temp;
-//	}
-//	size += 1;
 	return Status::SUCCESS;
 }
 
 Status DoublyLinkedList::insert(Student&& obj) noexcept {  // insert at end
-	std::cout << "\nMove semantic insert at end\n";
+//	std::cout << "\nMove semantic insert at end\n";
 	insert(obj, size);
 	return Status::SUCCESS;
 }
 
 Status DoublyLinkedList::insert(Student&& obj, unsigned long index) noexcept {  // insert at index, for beginning, index = 0
 // insert at end
-	std::cout << "\nMove semantic insert at index\n";
+//	std::cout << "\nMove semantic insert at index\n";
 	insert(obj, index);
 	return Status::SUCCESS;
 }
-
-//std::shared_ptr<DoublyLinkedListNode> DoublyLinkedList::createNode(const Student& obj) {
-//	// create a Node in heap and return shared_ptr
-//	return std::make_shared<DoublyLinkedListNode>(obj);
-//}
-
 
 unsigned long DoublyLinkedList::search(const std::string& registrationId) {
 	auto temp = head;
@@ -164,13 +131,6 @@ Status DoublyLinkedList::deleteItem(unsigned long index) {
 		std::cout << "Index out of bounds\n";
 		return Status::FAILURE;
 	}
-//	else if (size == 1) {
-//		head.reset();
-//		head = nullptr;
-//		tail = nullptr;
-//		size = 0;
-//		return Status::SUCCESS;
-//	}
 	else {
 		auto cursor = head;
 		unsigned long position = 0;
@@ -197,31 +157,6 @@ Status DoublyLinkedList::deleteItem(unsigned long index) {
 	return Status::FAILURE;
 }
 
-//Status DoublyLinkedList::deleteItem(unsigned long index) {
-//	if (nullptr == head) {
-//		return Status::FAILURE;	
-//	}
-//	else {
-//		auto temp = head;
-//		while (nullptr != temp) {
-//			if ((*temp).getRollNumber() == obj.getRollNumber()) {
-//				auto prevNode = temp->prevNodePtr;
-//				auto nextNode = temp->nextNodePtr;
-//				
-//				if (nullptr != prevNode) {
-//					prevNode->nextNodePtr = nextNode;
-//				}
-//				
-//				if (nullptr != nextNode) {
-//					nextNode->prevNodePtr = prevNode;
-//				}
-//				temp.reset();
-//			}	
-//		}
-//		return Status::SUCCESS;
-//	}
-//}
-
 Status DoublyLinkedList::traverse(Status (*functionPtr)(Student&)) {
 	auto temp = head;
 	while (nullptr != temp) {
@@ -230,7 +165,6 @@ Status DoublyLinkedList::traverse(Status (*functionPtr)(Student&)) {
 	}
 	return Status::SUCCESS;
 }
-
 
 Status DoublyLinkedList::display() const {
 	auto temp = head;

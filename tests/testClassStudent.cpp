@@ -1,3 +1,9 @@
+/* File : testClassStudent.cpp
+ * Author : Mohammed Farhan Haider <mohammed-farhan.haider@capgemini.com>
+ * Description : This file contains some test function definitions
+ * for testing Student class.
+ */
+
 #include <iostream>
 #include "Student.hpp"
 #include "tests.hpp"

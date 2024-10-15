@@ -1,9 +1,15 @@
+/* File : Utility.cpp
+ * Author : Mohammed Farhan Haider <mohammed-farhan.haider@capgemini.com>
+ * Description : This file contains the main function which
+ * is the entry point of StudentSphere application.
+ * It also contains code for displaying Main Menu.
+ */
+
 #include <iostream>
 #include <cstdlib>
 #include "tests.hpp"
 #include "Utility.hpp"
 #include "DoublyLinkedList.hpp"
-//#include "Student.hpp"
 
 int main() {
 	int choice = 0;
